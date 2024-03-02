@@ -1,32 +1,26 @@
 import React from "react";
-import "../../assets/libs/swiper/swiper-bundle.min.js";
-import Swiper from "../../assets/libs/swiper/swiper-bundle.min.js";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/swiper-bundle.css";
+import images from "../../assets/images/images.json";
 
 const MainPage = () => {
-    const sliderMain = new Swiper(".slider_main", {
-        freeMode: true, // позволяет листать слайды без привязки к конкретной позиции
-        centerSlides: true,
-        breakpoints: {
-            0: {
-                slidesPerView: 2.5,
-                spaceBetween: 20
-            },
-            680: {
-                slidesPerView: 3.5,
-                spaceBetween: 60
-            }
-        }
-    });
+    console.log(images);
     return (
-        <>
-            <div className="swiper slide slider_main">
-                <div className="swiper-wrapper slider__wrapper">
-                    <div className="swiper-slide swiper__item">Lorem ipsum dolor sit amet consectetur adipisicing elit. Id vel iusto pariatur similique aliquid eligendi itaque libero nulla, tenetur quis amet, repellendus at aut fuga atque molestias nam modi deserunt.</div>
-                    <div className="swiper-slide swiper__item">Lorem ipsum dolor sit amet consectetur adipisicing elit. Id vel iusto pariatur similique aliquid eligendi itaque libero nulla, tenetur quis amet, repellendus at aut fuga atque molestias nam modi deserunt.</div>
-                    <div className="swiper-slide swiper__item">Lorem ipsum dolor sit amet consectetur adipisicing elit. Id vel iusto pariatur similique aliquid eligendi itaque libero nulla, tenetur quis amet, repellendus at aut fuga atque molestias nam modi deserunt.</div>
-                </div>
-            </div>
-        </>
+        <Swiper
+            spaceBetween={50}
+            slidesPerView={2.5}
+            onSlideChange={() => console.log("slide change")}
+            onSwiper={(swiper) => console.log(swiper)}
+        >
+            {images.map(item => (
+                <SwiperSlide key={item.id}>
+                    <img src={item.img} alt={item.title} />
+                </SwiperSlide>
+            ))}
+            {/* <SwiperSlide>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum omnis consectetur hic, quis eum dignissimos esse temporibus consequatur ut aspernatur architecto officia a! Suscipit commodi, eum ullam dolorum odit quis!</SwiperSlide>
+            <SwiperSlide>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum omnis consectetur hic, quis eum dignissimos esse temporibus consequatur ut aspernatur architecto officia a! Suscipit commodi, eum ullam dolorum odit quis!</SwiperSlide>
+            <SwiperSlide>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum omnis consectetur hic, quis eum dignissimos esse temporibus consequatur ut aspernatur architecto officia a! Suscipit commodi, eum ullam dolorum odit quis!</SwiperSlide> */}
+        </Swiper>
     );
 };
 

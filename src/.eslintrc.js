@@ -10,7 +10,7 @@ module.exports = {
         sourceType: "module"
     },
     plugins: ["react"],
-    ignorePatterns: ["temp.js", "./app/assets/libs/swiper"],
+    ignorePatterns: ["swiper-bundle.min.js", "./app/assets/libs/swiper/swiper-bundle.min.js"],
     rules: {
         // Ошибка: Expected indentation of 2 spaces but found 4
         // Отступы д/б кратны 4-м

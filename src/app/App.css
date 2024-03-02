@@ -31,3 +31,8 @@ body, html {
   overflow: hidden;
   line-height: 1.8;
 }
+
+img {
+  /* width: 100%; */
+  max-height: 40vh;
+}
