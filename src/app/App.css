@@ -7,6 +7,7 @@
 :root {
   --dark: #070707;
   --sizeindex: calc(1vw + 1vh);
+  --transition: .75s cubic-bezier(.2, .6, 0, 1);
 }
 
 @font-face {
@@ -32,6 +33,31 @@ body, html {
   line-height: 1.8;
 }
 
-img {
-  /* max-height: 40vh; */
+.slider {
+  height: 100%;
+  transform: rotate(15deg);
+  overflow: visible;
+  top: 10vh;
+}
+
+.slider__wrapper {
+  transition: var(--transition)!important;
+  will-change: transform;
+}
+
+.slider__item {
+  position: relative;
+  min-height: 70vh;
+  max-height: 75vh;
+  overflow: hidden;
+}
+
+.slider__img {
+  position: absolute;
+  width: 300%;
+  height: 100%;
+  background-size: cover;
+  left: -100%;
+  transition: var(--transition)!important;
+  will-change: transform;
 }
