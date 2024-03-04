@@ -7,7 +7,7 @@
 :root {
   --dark: #070707;
   --sizeindex: calc(1vw + 1vh);
-  --transition: .75s cubic-bezier(.2, .6, 0, 1);
+  --transition: .75s cubic-bezier(0.2, 0.6, 0.0, 0.1);
 }
 
 @font-face {
@@ -40,16 +40,22 @@ body, html {
   top: 10vh;
 }
 
-.slider__wrapper {
+/* .slider__wrapper {
+  transition: var(--transition)!important;
+  will-change: transform;
+} */
+
+.swiper-wrapper {
   transition: var(--transition)!important;
   will-change: transform;
 }
 
 .slider__item {
-  position: relative;
+  /* position: relative; */
   min-height: 70vh;
   max-height: 75vh;
   overflow: hidden;
+  cursor: pointer;
 }
 
 .slider__img {
@@ -60,4 +66,18 @@ body, html {
   left: -100%;
   transition: var(--transition)!important;
   will-change: transform;
+}
+
+.slider-background {
+  margin-top: -60vh;
+  margin-left: -20vh;
+  z-index: 0;
+  transform: rotate(-20deg)!important;
+  overflow: visible;
+  opacity: 0.30;
+  filter: saturate(10) blur(120px);
+}
+
+.slider-background .slider__item {
+  min-height: 100vh;
 }
