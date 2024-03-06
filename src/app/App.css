@@ -7,7 +7,7 @@
 :root {
   --dark: #070707;
   --sizeindex: calc(1vw + 1vh);
-  --transition: .75s cubic-bezier(0.2, 0.6, 0.0, 0.1);
+  --transition: .3s cubic-bezier(0.2, 0.6, 0.0, 0.1);
 }
 
 @font-face {
@@ -55,6 +55,7 @@ body, html {
   overflow: hidden;
   cursor: pointer;
   transition: trnsform var(--transition);
+  transition: box-shadow var(--transition);
 }
 
 .slider__img {
@@ -63,7 +64,7 @@ body, html {
   height: 100%;
   background-size: cover;
   left: -100%;
-  transition: var(--transition)!important;
+  transition: var(--transition)!important ;
   will-change: transform;
 }
 
@@ -84,5 +85,5 @@ body, html {
 .swiper-slide.slider__item.opened {
   z-index: 2;
   transform: rotate(-15deg) scale(1.25);
-  box-shadow: rgb(0 0 0 / 0.75);
+  box-shadow: rgb(0 0 0 / 0.75) 0 0 0 10000px;
 }

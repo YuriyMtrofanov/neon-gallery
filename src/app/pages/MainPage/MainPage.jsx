@@ -3,23 +3,32 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.css";
 import images from "../../assets/images/images.json";
 import { FreeMode, Mousewheel, Parallax, Controller } from "swiper/modules";
-// import SwiperItem from "../../components/SliderItem";
 
 const MainPage = () => {
-    // const images = [
-    //     {
-    //         "img": "https://fonoteka.top/uploads/posts/2021-04/1618318453_55-phonoteka_org-p-neonovii-fon-dlya-fotoshopa-59.jpg",
-    //         "title": "image",
-    //         "id": "1"
-    //     }
-    // ];
     const [firstSwiper, setFirstSwiper] = useState(null);
     const [secondSwiper, setSecondSwiper] = useState(null);
 
-    let isOpened = false;
-    const changeClassNames = () => {
-        console.log(isOpened);
-        return isOpened = !isOpened;
+    const initialData = images.map(item => {
+        const changedItem = {
+            ...item,
+            opened: false // добавляю в каждый объект поле "opened" для работы с классом
+        };
+        return changedItem;
+    });
+    const [photos, setPhotos] = useState(initialData);
+
+    const handleClick = (id) => {
+        setPhotos(prevState => prevState.map(item => {
+            return item.id === id
+                ? {
+                    ...item,
+                    opened: !item.opened
+                }
+                : {
+                    ...item,
+                    opened: false
+                };
+        }));
     };
 
     return (
@@ -45,12 +54,11 @@ const MainPage = () => {
                     onSwiper={setFirstSwiper}
                     controller={{ control: secondSwiper }}
                 >
-                    {images.map(item => (
-                        <SwiperSlide 
+                    {photos.map(item => (
+                        <SwiperSlide
                             key={item.id}
-                            className="swiper-slide slider__item"
-                            onClick={changeClassNames}
-                            // onClick={()=>changeClassNames(item.id)}
+                            onClick={() => handleClick(item.id)}
+                            className={`swiper-slide slider__item ${item.opened ? "opened" : ""}`}
                         >
                             <div
                                 className="slider__img"
