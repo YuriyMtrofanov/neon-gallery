@@ -6,12 +6,22 @@ import { FreeMode, Mousewheel, Parallax, Controller } from "swiper/modules";
 // import SwiperItem from "../../components/SliderItem";
 
 const MainPage = () => {
+    // const images = [
+    //     {
+    //         "img": "https://fonoteka.top/uploads/posts/2021-04/1618318453_55-phonoteka_org-p-neonovii-fon-dlya-fotoshopa-59.jpg",
+    //         "title": "image",
+    //         "id": "1"
+    //     }
+    // ];
     const [firstSwiper, setFirstSwiper] = useState(null);
     const [secondSwiper, setSecondSwiper] = useState(null);
-    const changeClassNames = (id) => {
-        // return images.map((item) => item.id === id ? "opened" : null);
-        console.log("slide id", id);
+
+    let isOpened = false;
+    const changeClassNames = () => {
+        console.log(isOpened);
+        return isOpened = !isOpened;
     };
+
     return (
         <>
             <div className="swiper slider slider-main">
@@ -38,9 +48,9 @@ const MainPage = () => {
                     {images.map(item => (
                         <SwiperSlide 
                             key={item.id}
-                            // className="swiper-slide slider__item"
-                            className={`swiper-slide slider__item`}
-                            onClick={()=>changeClassNames(item.id)}
+                            className="swiper-slide slider__item"
+                            onClick={changeClassNames}
+                            // onClick={()=>changeClassNames(item.id)}
                         >
                             <div
                                 className="slider__img"
