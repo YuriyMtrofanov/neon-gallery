@@ -7,7 +7,7 @@
 :root {
   --dark: #070707;
   --sizeindex: calc(1vw + 1vh);
-  --transition: .3s cubic-bezier(0.2, 0.6, 0.0, 0.1);
+  --transition: .5s cubic-bezier(0.2, 0.6, 0.0, 0.1);
 }
 
 @font-face {
@@ -74,8 +74,8 @@ body, html {
   z-index: 0;
   transform: rotate(-20deg)!important;
   overflow: visible;
-  opacity: 0.30;
-  filter: saturate(10) blur(120px);
+  opacity: 0.15;
+  filter: blur(120px) saturate(10);
 }
 
 .slider-background .slider__item {
@@ -84,6 +84,43 @@ body, html {
 
 .swiper-slide.slider__item.opened {
   z-index: 2;
-  transform: rotate(-15deg) scale(1.25);
+  transform: rotate(-15deg) scale(1.45);
   box-shadow: rgb(0 0 0 / 0.75) 0 0 0 10000px;
+}
+
+.description {
+  position:absolute;
+  font-size: calc(var(--sizeindex) * 0.8);
+  top: 20vh;
+  left: 8vw;
+  max-width: 24vw;
+  transition: opacity var(--transition), transform var(--transition);
+  /* transition: transform var(--transition); */
+}
+
+.description p {
+  margin-top: 3vh;
+  opacity: 0.9;
+  transition: transform(var(--transition));
+  transition-duration: 3s;
+}
+
+
+.description.hidden {
+  opacity: 0;
+  transform: translateY(5vh);
+}
+
+.description.hidden p {
+  transform: translateY(3vh);
+}
+
+.logo {
+  font-size: calc(var(--sizeindex) * 2.4);
+  font-weight: 900;
+  display: inline-block;
+  line-height: 5vh;
+  background: linear-gradient(45deg, DarkMagenta, Tomato, Violet);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }

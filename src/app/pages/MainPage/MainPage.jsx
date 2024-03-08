@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.css";
 import images from "../../assets/images/images.json";
@@ -7,6 +7,14 @@ import { FreeMode, Mousewheel, Parallax, Controller } from "swiper/modules";
 const MainPage = () => {
     const [firstSwiper, setFirstSwiper] = useState(null);
     const [secondSwiper, setSecondSwiper] = useState(null);
+
+    const [isActive, setIsActive] = useState(true);
+    const handleIsActive = (index) => {
+        setIsActive(index > 0 ? false : true);
+    };
+    useEffect(() => {
+        console.log("isActive", isActive);
+    }, [isActive]);
 
     const initialData = images.map(item => {
         const changedItem = {
@@ -33,6 +41,12 @@ const MainPage = () => {
 
     return (
         <>
+            <div className={`description ${!isActive ? "hidden" : ""}`}>
+                <div className="logo">
+                    Neon Gallery
+                </div>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minima amet quod iusto animi nobis, nam necessitatibus debitis excepturi, possimus perspiciatis neque facilis unde illo eius. Qui dicta repellat ipsam a?</p>
+            </div>
             <div className="swiper slider slider-main">
                 <Swiper
                     className="swiper-wrapper slider__wrapper"
@@ -52,6 +66,7 @@ const MainPage = () => {
                     parallax={true}
                     centeredSlides={true}
                     onSwiper={setFirstSwiper}
+                    onSlideChange={(swiper) => handleIsActive(swiper.activeIndex)}
                     controller={{ control: secondSwiper }}
                 >
                     {photos.map(item => (
