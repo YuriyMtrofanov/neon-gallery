@@ -7,7 +7,7 @@
 :root {
   --dark: #070707;
   --sizeindex: calc(1vw + 1vh);
-  --transition: .5s cubic-bezier(0.2, 0.6, 0.0, 0.1);
+  --transition: .3s cubic-bezier(0.2, 0.6, 0.0, 0.1);
 }
 
 @font-face {
@@ -28,7 +28,6 @@ body, html {
   background-color: var(--dark);
   color: #fff;
   font-family: raleway-m;
-  /* font-size: calc(var(--sizeindex) * .8); */
   overflow: hidden;
   line-height: 1.8;
 }
@@ -50,8 +49,6 @@ body, html {
 }
 
 .slider__item {
-  /* position: relative; */
-  /* height: 80vh; */
   overflow: hidden;
   cursor: pointer;
   transition: trnsform var(--transition);
@@ -70,7 +67,6 @@ body, html {
 
 .slider-background {
   margin-top: -60vh;
-  /* margin-left: -20vh; */
   z-index: 0;
   transform: rotate(-20deg)!important;
   overflow: visible;
@@ -95,7 +91,6 @@ body, html {
   left: 8vw;
   max-width: 24vw;
   transition: opacity var(--transition), transform var(--transition);
-  /* transition: transform var(--transition); */
 }
 
 .description p {
@@ -104,7 +99,6 @@ body, html {
   transition: transform(var(--transition));
   transition-duration: 3s;
 }
-
 
 .description.hidden {
   opacity: 0;
@@ -121,6 +115,6 @@ body, html {
   display: inline-block;
   line-height: 5vh;
   background: linear-gradient(45deg, DarkMagenta, Tomato, Violet);
-  -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }

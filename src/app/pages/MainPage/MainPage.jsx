@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.css";
 import images from "../../assets/images/images.json";
@@ -12,9 +12,6 @@ const MainPage = () => {
     const handleIsActive = (index) => {
         setIsActive(index > 0 ? false : true);
     };
-    useEffect(() => {
-        console.log("isActive", isActive);
-    }, [isActive]);
 
     const initialData = images.map(item => {
         const changedItem = {
